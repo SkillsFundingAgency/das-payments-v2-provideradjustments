@@ -7,8 +7,6 @@ jobs:
     #demands: LATEST_DOTNET_VERSION
   variables:
   - group: BUILD Management Resources
-  - name: SolutionBaseName
-    value: SFA.DAS.Payments.Application
   steps:
   - template: /azure-pipelines-templates/build/step/gitversion.yml
 
