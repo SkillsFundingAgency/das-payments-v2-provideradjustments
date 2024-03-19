@@ -99,7 +99,7 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: 'Publish Pipeline Artifact - Provider Adjustments'
     inputs:
-      targetPath: '$(build.artifactstagingdirectory)\ProviderAdjustments'
+      targetPath: '$(build.artifactstagingdirectory)'
       artifact: 'provideradjustmentsV2-drop'
       continueOnError: true
 
