@@ -30,7 +30,7 @@ stages:
 #- template: azure-pipelines-templates/deploy/stage/nuget-publish.yml
 
 - stage: Deploy_DST
-  displayName: Deploy to DST
+  displayName: 'Deploy to DST'
   variables:
   - name: tagEnvironment
     value: Dev/Test
