@@ -9,6 +9,12 @@ variables:
   value : 'x64'
 - name: BuildConfiguration
   value: 'release'
+- group: Common - Project Level
+- group: Common - Connection String
+- group: Common - Database Names
+- group: Common - Database Usernames
+- group: DCOL-DAS-PaymentsV2-Release
+- group: Common -  Storage Account
 
 resources:
   repositories:
@@ -22,3 +28,19 @@ stages:
   jobs:
   - template: pipeline-templates/job/code-build.yml
 - template: azure-pipelines-templates/deploy/stage/nuget-publish.yml
+
+- stage: Deploy_DST
+  displayName: Deploy to DST
+  variables:
+  - name: tagEnvironment
+    value: Dev/Test
+  - group: DCOL-DST - Environment Key Vault Secrets
+  - group: DCOL-DAS-PaymentsV2-DST
+  jobs:
+  - template: pipeline-templates/job/deploy.yml
+    parameters:
+      pool: DCT Build Pool
+      environmentName: DST
+      azureSubscription: DCT-VSO
+      clusterConnection: 'DCOL-DST-ServiceFabric-WEU'
+      serviceConnectionName: 'DCOL-DST-ServiceFabric-WEU'
