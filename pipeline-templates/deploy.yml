@@ -19,21 +19,21 @@ jobs:
     runOnce:
       deploy:
         steps:
-        - task: ServiceFabricPowerShell@1
-          displayName: 'Remove DAS Payments - ProviderAdjustments'
-          inputs:
-            clusterConnection: ${{ parameters.clusterConnection }}
-            filePath: '$(Pipeline.Workspace)/s/pipeline-templates/RemoveServiceFabricApps.ps1'
-            ScriptArguments: '-applicationFilter $(PAAppFilter)'
-            continueOnError: true
+        #- task: ServiceFabricPowerShell@1
+        #  displayName: 'Remove DAS Payments - ProviderAdjustments'
+        #  inputs:
+        #    clusterConnection: ${{ parameters.clusterConnection }}
+        #    filePath: '$(Pipeline.Workspace)/s/pipeline-templates/RemoveServiceFabricApps.ps1'
+        #    ScriptArguments: '-applicationFilter $(PAAppFilter)'
+        #    continueOnError: true
 
         - task: ServiceFabricDeploy@1
           displayName: 'Deploy Service Fabric Application - DAS_Payment - ProviderAdjustments'
           inputs:
-            applicationPackagePath: '$(system.defaultworkingdirectory)/**/provideradjustments-drop/applicationpackage'
+            applicationPackagePath: '$(system.defaultworkingdirectory)/**/provideradjustmentsV2/applicationpackage'
             serviceConnectionName: ${{ parameters.serviceConnectionName }}
-            publishProfilePath: '$(system.defaultworkingdirectory)/**/provideradjustments-drop/PublishProfiles/Cloud.xml'
-            applicationParameterPath: '$(System.DefaultWorkingDirectory)/**/provideradjustments-drop/ApplicationParameters/Cloud.xml'
+            publishProfilePath: '$(system.defaultworkingdirectory)/**/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
+            applicationParameterPath: '$(System.DefaultWorkingDirectory)/**/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
             compressPackage: true
             skipUpgradeSameTypeAndVersion: true
             overridePublishProfileSettings: true
