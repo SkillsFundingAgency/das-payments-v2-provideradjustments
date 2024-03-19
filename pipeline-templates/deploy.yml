@@ -17,27 +17,27 @@ jobs:
   variables:
     PAAppFilter: 'SFA.DAS.Payments.ProviderAdjustments'
 
-  steps:
-  - task: ServiceFabricPowerShell@1
-    displayName: 'Remove DAS Payments - ProviderAdjustments'
-    inputs:
-      clusterConnection: ${{ parameters.clusterConnection }}
-      ScriptPath: '$(System.DefaultWorkingDirectory)/_DevOps-Utilities/DASServiceFabricUtils/RemoveServiceFabricApps.ps1'
-      ScriptArguments: '-applicationFilter $(PAAppFilter)'
-      continueOnError: true
+steps:
+- task: ServiceFabricPowerShell@1
+  displayName: 'Remove DAS Payments - ProviderAdjustments'
+  inputs:
+    clusterConnection: ${{ parameters.clusterConnection }}
+    ScriptPath: '$(System.DefaultWorkingDirectory)/_DevOps-Utilities/DASServiceFabricUtils/RemoveServiceFabricApps.ps1'
+    ScriptArguments: '-applicationFilter $(PAAppFilter)'
+    continueOnError: true
 
-  - task: ServiceFabricDeploy@1
-    displayName: 'Deploy Service Fabric Application - DAS_Payment - ProviderAdjustments'
-    inputs:
-      applicationPackagePath: '$(system.defaultworkingdirectory)/**/provideradjustments-drop/applicationpackage'
-      serviceConnectionName: ${{ parameters.serviceConnectionName }}
-      publishProfilePath: '$(system.defaultworkingdirectory)/**/provideradjustments-drop/PublishProfiles/Cloud.xml'
-      applicationParameterPath: '$(System.DefaultWorkingDirectory)/**/provideradjustments-drop/ApplicationParameters/Cloud.xml'
-      compressPackage: true
-      skipUpgradeSameTypeAndVersion: true
-      overridePublishProfileSettings: true
-      upgradeMode: UnmonitoredAuto
-      UpgradeReplicaSetCheckTimeoutSec: 600000
-      TimeoutSec: 600000
-      continueOnError: true
-      timeoutInMinutes: 65
+- task: ServiceFabricDeploy@1
+  displayName: 'Deploy Service Fabric Application - DAS_Payment - ProviderAdjustments'
+  inputs:
+    applicationPackagePath: '$(system.defaultworkingdirectory)/**/provideradjustments-drop/applicationpackage'
+    serviceConnectionName: ${{ parameters.serviceConnectionName }}
+    publishProfilePath: '$(system.defaultworkingdirectory)/**/provideradjustments-drop/PublishProfiles/Cloud.xml'
+    applicationParameterPath: '$(System.DefaultWorkingDirectory)/**/provideradjustments-drop/ApplicationParameters/Cloud.xml'
+    compressPackage: true
+    skipUpgradeSameTypeAndVersion: true
+    overridePublishProfileSettings: true
+    upgradeMode: UnmonitoredAuto
+    UpgradeReplicaSetCheckTimeoutSec: 600000
+    TimeoutSec: 600000
+    continueOnError: true
+    timeoutInMinutes: 65
