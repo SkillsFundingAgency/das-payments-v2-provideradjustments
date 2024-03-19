@@ -37,7 +37,7 @@ stages:
   - group: DCOL-DST - Environment Key Vault Secrets
   - group: DCOL-DAS-PaymentsV2-DST
   jobs:
-  - template: pipeline-templates/job/deploy.yml
+  - template: pipeline-templates/deploy.yml
     parameters:
       pool: DCT Build Pool
       environmentName: DST
