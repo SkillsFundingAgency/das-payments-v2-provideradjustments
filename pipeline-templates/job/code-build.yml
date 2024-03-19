@@ -6,12 +6,22 @@ jobs:
     name: SLD Build pool
     #demands: LATEST_DOTNET_VERSION
   variables:
+     
   - group: BUILD Management Resources
   steps:
   - template: /azure-pipelines-templates/build/step/gitversion.yml
 
+  - task: NuGetCommand@2
+    displayName: Nuget Restore
+    inputs:
+      command: restore
+      projects: ${{ parameters.TargetProjects }}
+      noCache: true
+      feedsToUse: 'select'
+      vstsFeed: 'dct-pkg'
+
   - task: DotNetCoreCLI@2
-    displayName: Restore
+    displayName: Dotnet Restore
     inputs:
       command: restore
       projects: ${{ parameters.TargetProjects }}
@@ -24,3 +34,77 @@ jobs:
     inputs:
       projects:  ${{ parameters.TargetProjects }}
       arguments: '--configuration $(buildConfiguration) --no-restore'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build UnitTest Projects'
+    inputs:
+      command: build
+      projects: '**/*unittest*.csproj'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test UnitTest Projects'
+    inputs:
+      command: test
+      projects: '**/*unittest*.csproj'
+      arguments: '--filter FullyQualifiedName~UnitTests'
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      targetPath: '$(build.artifactstagingdirectory)'
+      artifact: drop
+
+  - task: MSBuild@1
+    displayName: 'Build solution'
+    inputs:
+      solution: 'src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric.sfproj'
+      msbuildArchitecture: x64
+      configuration: '$(BuildConfiguration)'
+      msbuildArguments: '/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /t:Package /p:PackageLocation="$(build.artifactstagingdirectory)\$(ArtifactFolderName)\ApplicationPackage" /p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+      maximumCpuCount: true
+      logProjectEvents: true
+      createLogFile: true
+      continueOnError: true
+  
+
+- task: CopyFiles@2
+  displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
+  inputs:
+     Contents: |
+     **\*.nupkg
+     !**\packages\**
+     !**\bin\x64\**
+    TargetFolder: '$(build.artifactstagingdirectory)\NugetPackages'
+    flattenFolders: true
+    continueOnError: true
+
+- task: CopyFiles@2
+  displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
+  inputs:
+    Contents: '*.xml'
+    TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2-drop\ApplicationParameters'
+    CleanTargetFolder: true
+    flattenFolders: true
+    continueOnError: true
+
+- task: CopyFiles@2
+    displayName: 'Copy PublishProfiles Files to: Artifact PublishProfiles Directory'
+    inputs:
+      Contents: '**\PublishProfiles\*.xml'
+      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2-drop\PublishProfiles'
+      CleanTargetFolder: true
+      flattenFolders: true
+      continueOnError: true
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Pipeline Artifact - Provider Adjustments'
+    inputs:
+      targetPath: '$(build.artifactstagingdirectory)\ProviderAdjustments'
+      artifact: 'provideradjustmentsV2-drop'
+      continueOnError: true
+
+  
+
+  
+
+  
