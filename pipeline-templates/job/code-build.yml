@@ -67,9 +67,9 @@ jobs:
       continueOnError: true
   
 
-- task: CopyFiles@2
-  displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
-  inputs:
+ - task: CopyFiles@2
+   displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
+   inputs:
      Contents: |
      **\*.nupkg
      !**\packages\**
