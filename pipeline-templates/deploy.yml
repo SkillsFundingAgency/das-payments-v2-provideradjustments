@@ -6,7 +6,7 @@ parameters:
   clusterConnection:
   serviceConnectionName:
 jobs:
-- deployment: Deploy Provider Adjustments
+- deployment: DeployProviderAdjustments
   pool:
     name: ${{ parameters.pool }}
     demands:
