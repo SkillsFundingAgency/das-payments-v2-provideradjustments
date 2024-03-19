@@ -14,10 +14,10 @@ jobs:
     - ReleaseEnvironment -equals ${{ parameters.environmentName }}
   environment: ${{ parameters.environmentName }}
 
-variables:
-  PAAppFilter: 'SFA.DAS.Payments.ProviderAdjustments'
+#variables:
+#  PAAppFilter: 'SFA.DAS.Payments.ProviderAdjustments'
 
-steps:
+
 - task: ServiceFabricPowerShell@1
   displayName: 'Remove DAS Payments - ProviderAdjustments'
   inputs:
