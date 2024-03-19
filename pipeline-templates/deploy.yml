@@ -17,7 +17,7 @@ jobs:
   variables:
     PAAppFilter: 'SFA.DAS.Payments.ProviderAdjustments'
 
-
+  steps:
   - task: ServiceFabricPowerShell@1
     displayName: 'Remove DAS Payments - ProviderAdjustments'
     inputs:
