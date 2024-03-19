@@ -67,9 +67,9 @@ jobs:
       continueOnError: true
   
 
- - task: CopyFiles@2
-   displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
-   inputs:
+  - task: CopyFiles@2
+    displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
+    inputs:
      Contents: |
      **\*.nupkg
      !**\packages\**
@@ -78,16 +78,16 @@ jobs:
     flattenFolders: true
     continueOnError: true
 
-- task: CopyFiles@2
-  displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
-  inputs:
-    Contents: '*.xml'
-    TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2-drop\ApplicationParameters'
-    CleanTargetFolder: true
-    flattenFolders: true
-    continueOnError: true
+  - task: CopyFiles@2
+    displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
+    inputs:
+      Contents: '*.xml'
+      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2-drop\ApplicationParameters'
+      CleanTargetFolder: true
+      flattenFolders: true
+      continueOnError: true
 
-- task: CopyFiles@2
+  - task: CopyFiles@2
     displayName: 'Copy PublishProfiles Files to: Artifact PublishProfiles Directory'
     inputs:
       Contents: '**\PublishProfiles\*.xml'
