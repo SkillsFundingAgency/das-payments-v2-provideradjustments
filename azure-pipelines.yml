@@ -19,6 +19,7 @@ variables:
 resources:
   repositories:
     - repository: das-payments-v2-provideradjustments
+      fetchDepth: 0
       type: github
       name: SkillsFundingAgency/das-payments-v2-provideradjustments
       endpoint: SkillsFundingAgency
