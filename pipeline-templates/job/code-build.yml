@@ -71,12 +71,12 @@ jobs:
     displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
     inputs:
      Contents: |
-     **\*.nupkg
-     !**\packages\**
-     !**\bin\x64\**
-    TargetFolder: '$(build.artifactstagingdirectory)\NugetPackages'
-    flattenFolders: true
-    continueOnError: true
+       **\*.nupkg
+       !**\packages\**
+       !**\bin\x64\**
+     TargetFolder: '$(build.artifactstagingdirectory)\NugetPackages'
+     flattenFolders: true
+     continueOnError: true
 
   - task: CopyFiles@2
     displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
