@@ -60,7 +60,7 @@ jobs:
       solution: 'src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric.sfproj'
       msbuildArchitecture: x64
       configuration: '$(BuildConfiguration)'
-      msbuildArguments: '/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /t:Package /p:PackageLocation="$(build.artifactstagingdirectory)\$(ArtifactFolderName)\ApplicationPackage" /p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
+      msbuildArguments: '/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /t:Package /p:PackageLocation="$(build.artifactstagingdirectory)\ApplicationPackage" /p:version=$(Build.BuildNumber) /p:FileVersion=$(Build.BuildNumber)'
       maximumCpuCount: true
       logProjectEvents: true
       createLogFile: true
@@ -100,7 +100,7 @@ jobs:
     displayName: 'Publish Pipeline Artifact - Provider Adjustments'
     inputs:
       targetPath: '$(build.artifactstagingdirectory)'
-      artifact: 'provideradjustmentsV2-drop'
+      artifact: 'provideradjustmentsV2'
       continueOnError: true
 
   
