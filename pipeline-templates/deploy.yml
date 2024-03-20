@@ -34,7 +34,7 @@ jobs:
             serviceConnectionName: ${{ parameters.serviceConnectionName }}
             publishProfilePath: '$(Pipeline.Workspace)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
             applicationParameterPath: '$(Pipeline.Workspace)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
-            applicationName: '$(PAAppFilter)'
+            applicationName: 'SFA.DAS.Payments.ProviderAdjustments'
             compressPackage: true
             skipUpgradeSameTypeAndVersion: true
             overridePublishProfileSettings: true
