@@ -34,6 +34,7 @@ jobs:
             serviceConnectionName: ${{ parameters.serviceConnectionName }}
             publishProfilePath: '$(Pipeline.Workspace)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
             applicationParameterPath: '$(Pipeline.Workspace)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
+            appName: '$(PAAppFilter)'
             compressPackage: true
             skipUpgradeSameTypeAndVersion: true
             overridePublishProfileSettings: true
