@@ -81,7 +81,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
     inputs:
-      Contents: '*.xml'
+      Contents: '**\ApplicationParameters\*.xml'
       TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2-drop\ApplicationParameters'
       CleanTargetFolder: true
       flattenFolders: true
