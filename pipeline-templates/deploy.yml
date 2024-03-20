@@ -32,8 +32,8 @@ jobs:
           inputs:
             applicationPackagePath: '$(system.defaultworkingdirectory)/provideradjustmentsV2/applicationpackage'
             serviceConnectionName: ${{ parameters.serviceConnectionName }}
-            publishProfilePath: '$(system.defaultworkingdirectory)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
-            applicationParameterPath: '$(System.DefaultWorkingDirectory)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
+            publishProfilePath: '$(Pipeline.Workspace)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
+            applicationParameterPath: '$(Pipeline.Workspace)/provideradjustmentsV2/provideradjustmentsV2-drop/PublishProfiles/Cloud.xml'
             compressPackage: true
             skipUpgradeSameTypeAndVersion: true
             overridePublishProfileSettings: true
