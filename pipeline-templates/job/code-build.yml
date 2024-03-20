@@ -78,7 +78,7 @@ jobs:
     displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
     inputs:
       Contents: '**\ApplicationParameters\*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2\ApplicationParameters'
+      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustments\ApplicationParameters'
       CleanTargetFolder: true
       flattenFolders: true
       continueOnError: true
@@ -87,7 +87,7 @@ jobs:
     displayName: 'Copy PublishProfiles Files to: Artifact PublishProfiles Directory'
     inputs:
       Contents: '**\PublishProfiles\*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2\PublishProfiles'
+      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustments\PublishProfiles'
       CleanTargetFolder: true
       flattenFolders: true
       continueOnError: true
