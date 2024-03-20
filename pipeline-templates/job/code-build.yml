@@ -48,11 +48,7 @@ jobs:
       projects: '**/*unittest*.csproj'
       arguments: '--filter FullyQualifiedName~UnitTests'
 
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish Artifact: drop'
-    inputs:
-      targetPath: '$(build.artifactstagingdirectory)'
-      artifact: drop
+  
 
   - task: MSBuild@1
     displayName: 'Build solution'
@@ -82,7 +78,7 @@ jobs:
     displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
     inputs:
       Contents: '**\ApplicationParameters\*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2-drop\ApplicationParameters'
+      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2\ApplicationParameters'
       CleanTargetFolder: true
       flattenFolders: true
       continueOnError: true
@@ -91,10 +87,16 @@ jobs:
     displayName: 'Copy PublishProfiles Files to: Artifact PublishProfiles Directory'
     inputs:
       Contents: '**\PublishProfiles\*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2-drop\PublishProfiles'
+      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustmentsV2\PublishProfiles'
       CleanTargetFolder: true
       flattenFolders: true
       continueOnError: true
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      targetPath: '$(build.artifactstagingdirectory)'
+      artifact: drop
 
   - task: PublishPipelineArtifact@1
     displayName: 'Publish Pipeline Artifact - Provider Adjustments'
