@@ -46,22 +46,22 @@ stages:
 #      clusterConnection: 'DCOL-DST-ServiceFabric-WEU'
 #      serviceConnectionName: 'DCOL-DST-ServiceFabric-WEU'
 
-#- stage: Deploy_DAS
-#  #dependsOn: Publish_MonitoringMetrics
-#  displayName: Deploy to DAS
-#  variables:
-#  - name: tagEnvironment
-#    value: Dev/Test
-#  - group: DCOL-DAS - Environment Key Vault Secrets
-#  - group: DCOL-DAS-PaymentsV2-DAS
-#  jobs:
-#  - template: pipeline-templates/deploy.yml
-#    parameters:
-#      pool: DCT Build Pool
-#      environmentName: DAS
-#      azureSubscription: DCT-VSO
-#      clusterConnection: 'DCOL-DAS-ServiceFabric-WEU'
-#      serviceConnectionName: 'DCOL-DAS-ServiceFabric-WEU'
+- stage: Deploy_DAS
+  #dependsOn: Publish_MonitoringMetrics
+  displayName: Deploy to DAS
+  variables:
+  - name: tagEnvironment
+    value: Dev/Test
+  - group: DCOL-DAS - Environment Key Vault Secrets
+  - group: DCOL-DAS-PaymentsV2-DAS
+  jobs:
+  - template: pipeline-templates/deploy.yml
+    parameters:
+      pool: DCT Build Pool
+      environmentName: DAS
+      azureSubscription: DCT-VSO
+      clusterConnection: 'DCOL-DAS-ServiceFabric-WEU'
+      serviceConnectionName: 'DCOL-DAS-ServiceFabric-WEU'
 
 - stage: Deploy_SIT
   #dependsOn: 
