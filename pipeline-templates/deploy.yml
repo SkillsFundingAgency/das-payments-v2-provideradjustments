@@ -27,6 +27,13 @@ jobs:
         #    ScriptArguments: '-applicationFilter $(PAAppFilter)'
         #    continueOnError: true
 
+        - task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
+          displayName: 'Tokenization: Transform ApplicationParameters file Cloud.xml'
+          inputs:
+            SourcePath: '$(Pipeline.Workspace)\**'
+            TargetFileNames: Cloud.xml
+            RequireVariable: true
+
         - task: ServiceFabricDeploy@1
           displayName: 'Deploy Service Fabric Application - DAS_Payment - ProviderAdjustments'
           inputs:
