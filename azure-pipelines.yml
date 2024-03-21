@@ -74,7 +74,7 @@ stages:
   - group: DCOL-SIT - Environment Key Vault Secrets
   - group: DCOL-DAS-PaymentsV2-SIT
   jobs:
-  - template: pipeline/deploy.yml
+  - template: pipeline-templates/deploy.yml
     parameters:
       pool: DCT Build Pool
       environmentName: SIT
