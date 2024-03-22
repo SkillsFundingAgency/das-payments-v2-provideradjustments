@@ -81,3 +81,23 @@ stages:
       azureSubscription: DCT-VSO
       clusterConnection: 'DCOL-SIT-ServiceFabric-WEU'
       serviceConnectionName: 'DCOL-SIT-ServiceFabric-WEU'
+
+- stage: Deploy_SDW
+  #dependsOn: 
+  #- Publish_MonitoringMetrics
+  #- Deploy_SIT
+  displayName: Deploy to SDW
+  variables:
+  - name: tagEnvironment
+    value: Dev/Test
+  - group: DCOL-SDW - Environment Key Vault Secrets
+  - group: DCOL-DAS-PaymentsV2-SDW
+
+  jobs:
+  - template: pipeline-templates/deploy.yml
+    parameters:
+      pool: SLD Build Pool
+      environmentName: SDW
+      azureSubscription: DCOL-Shadow
+      clusterConnection: 'DCOL-SDW-ServiceFabric-WEU'
+      serviceConnectionName: 'DCOL-SDW-ServiceFabric-WEU'
