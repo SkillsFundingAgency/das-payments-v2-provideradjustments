@@ -19,13 +19,13 @@ jobs:
     runOnce:
       deploy:
         steps:
-        - task: ServiceFabricPowerShell@1
-          displayName: 'Remove DAS Payments - ProviderAdjustments'
-          inputs:
-            clusterConnection: ${{ parameters.clusterConnection }}
-            filePath: '$(Pipeline.Workspace)/publish/RemoveServiceFabricApps.ps1'
-            ScriptArguments: '-applicationFilter $(PAAppFilter)'
-            continueOnError: true
+        #- task: ServiceFabricPowerShell@1
+        #  displayName: 'Remove DAS Payments - ProviderAdjustments'
+        #  inputs:
+        #    clusterConnection: ${{ parameters.clusterConnection }}
+        #    filePath: '$(Pipeline.Workspace)/publish/RemoveServiceFabricApps.ps1'
+        #    ScriptArguments: '-applicationFilter $(PAAppFilter)'
+        #    continueOnError: true
 
         - task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
           displayName: 'Tokenization: Transform ApplicationParameters file Cloud.xml'
