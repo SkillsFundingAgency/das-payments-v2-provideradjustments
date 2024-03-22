@@ -29,7 +29,6 @@ jobs:
             clusterConnectionName: ${{ parameters.clusterConnection }}
             ScriptType: 'InlineScript'
             InlineScript: |
-              # Delete the Service Fabric application
               Remove-ServiceFabricApplication -ApplicationName fabric:/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric -Force
             #filePath: '$(Pipeline.Workspace)/publish/RemoveServiceFabricApps.ps1'
             #ScriptArguments: '-applicationFilter $(PAAppFilter)'

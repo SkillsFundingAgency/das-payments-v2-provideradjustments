@@ -40,7 +40,7 @@ stages:
   jobs:
   - template: pipeline-templates/deploy.yml
     parameters:
-      pool: Azure Pipelines
+      pool: DCT
       environmentName: DST
       azureSubscription: DCT-VSO
       clusterConnection: 'DCOL-DST-ServiceFabric-WEU'
@@ -57,7 +57,7 @@ stages:
   jobs:
   - template: pipeline-templates/deploy.yml
     parameters:
-      pool: Azure Pipelines
+      pool: DCT
       environmentName: DAS
       azureSubscription: DCT-VSO
       clusterConnection: 'DCOL-DAS-ServiceFabric-WEU'
@@ -76,7 +76,7 @@ stages:
   jobs:
   - template: pipeline-templates/deploy.yml
     parameters:
-      pool: SLD Build Pool
+      pool: DCT
       environmentName: SIT
       azureSubscription: DCT-VSO
       clusterConnection: 'DCOL-SIT-ServiceFabric-WEU'
@@ -96,7 +96,7 @@ stages:
   jobs:
   - template: pipeline-templates/deploy.yml
     parameters:
-      pool: SLD Build Pool
+      pool: DCT
       environmentName: SDW
       azureSubscription: DCOL-Shadow
       clusterConnection: 'DCOL-SDW-ServiceFabric-WEU'
