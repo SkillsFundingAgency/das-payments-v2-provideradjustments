@@ -28,7 +28,7 @@ jobs:
             ScriptType: 'InlineScript'
             InlineScript: |
               # Delete the Service Fabric application
-              Remove-ServiceFabricApplication -ApplicationName SFA.DAS.Payments.ProviderAdjustments -Force
+              Remove-ServiceFabricApplication -ApplicationName SFA.DAS.Payments.ProviderAdjustments.ServiceFabric -Force
             #filePath: '$(Pipeline.Workspace)/publish/RemoveServiceFabricApps.ps1'
             #ScriptArguments: '-applicationFilter $(PAAppFilter)'
             #continueOnError: true
