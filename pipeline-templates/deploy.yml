@@ -11,6 +11,8 @@ jobs:
     name: ${{ parameters.pool }}
     demands:
     - ReleaseEnvironment -equals ${{ parameters.environmentName }}
+    workspace:
+      clean: all
   environment: ${{ parameters.environmentName }}
   variables:
     PAAppFilter: 'SFA.DAS.Payments.ProviderAdjustments'
