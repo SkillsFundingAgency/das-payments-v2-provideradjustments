@@ -23,6 +23,7 @@ jobs:
           displayName: 'Remove DAS Payments - ProviderAdjustments'
           inputs:
             ConnectionType: 'ClusterConnection'
+            serviceConnectionName: ${{ parameters.serviceConnectionName }}
             clusterConnectionName: ${{ parameters.clusterConnection }}
             ScriptType: 'InlineScript'
             InlineScript: |
