@@ -93,8 +93,8 @@ jobs:
     inputs:
       Contents: |
         pipeline-templates/scripts/**    
-        TargetFolder: '$(build.artifactstagingdirectory)/publish'
-        OverWrite: true
+      TargetFolder: '$(build.artifactstagingdirectory)/publish'
+      OverWrite: true
 
   - task: CopyFiles@2
     displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
