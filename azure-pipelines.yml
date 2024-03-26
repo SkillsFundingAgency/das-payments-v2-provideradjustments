@@ -28,6 +28,8 @@ stages:
 - stage: Build
   jobs:
   - template: pipeline-templates/job/code-build.yml
+    workspace:
+      clean: all
 #- template: azure-pipelines-templates/deploy/stage/nuget-publish.yml
 
 - stage: Deploy_DST
@@ -39,8 +41,6 @@ stages:
   - group: DCOL-DAS-PaymentsV2-DST
   jobs:
   - template: pipeline-templates/deploy.yml
-    workspace:
-      clean: all
     parameters:
       pool: DCT Build Pool
       environmentName: DST
@@ -58,8 +58,6 @@ stages:
   - group: DCOL-DAS-PaymentsV2-DAS
   jobs:
   - template: pipeline-templates/deploy.yml
-    workspace:
-      clean: all
     parameters:
       pool: DCT Build Pool
       environmentName: DAS
@@ -79,8 +77,6 @@ stages:
   - group: DCOL-DAS-PaymentsV2-SIT
   jobs:
   - template: pipeline-templates/deploy.yml
-    workspace:
-      clean: all
     parameters:
       pool: DCT Build Pool
       environmentName: SIT
@@ -101,8 +97,6 @@ stages:
 
   jobs:
   - template: pipeline-templates/deploy.yml
-    workspace:
-      clean: all
     parameters:
       pool: DCT Build Pool
       environmentName: SDW
