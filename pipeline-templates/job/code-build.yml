@@ -79,7 +79,7 @@ jobs:
   - task: DeleteFiles@1
     displayName: 'Delete Symbols files from Artifact Folder for $(ArtifactFolderName) '
     inputs:
-      SourceFolder: '$(build.artifactstagingdirectory)\*ApplicationPackage*\'
+      SourceFolder: '$(build.artifactstagingdirectory)\ApplicationPackage\'
       Contents: '**\*ApplicationPackage*\*.pdb'
       continueOnError: true
   
@@ -127,11 +127,11 @@ jobs:
       flattenFolders: true
       continueOnError: true
 
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish Artifact: drop'
-    inputs:
-      targetPath: '$(build.artifactstagingdirectory)'
-      artifact: drop
+  #- task: PublishPipelineArtifact@1
+  #  displayName: 'Publish Artifact: drop'
+  #  inputs:
+  #    targetPath: '$(build.artifactstagingdirectory)'
+  #    artifact: drop
 
   - task: PublishPipelineArtifact@1
     displayName: 'Publish Pipeline Artifact - Provider Adjustments'
