@@ -40,7 +40,7 @@ stages:
   jobs:
   - template: pipeline-templates/deploy.yml
     parameters:
-      pool: DCT
+      pool: DCT Build Pool
       environmentName: DST
       azureSubscription: DCT-VSO
       clusterConnection: 'DCOL-DST-ServiceFabric-WEU'
