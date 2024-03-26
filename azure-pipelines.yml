@@ -57,7 +57,7 @@ stages:
   jobs:
   - template: pipeline-templates/deploy.yml
     parameters:
-      pool: DCT Build Pool
+      pool: SLD Build Pool
       environmentName: DAS
       azureSubscription: DCT-VSO
       clusterConnection: 'DCOL-DAS-ServiceFabric-WEU'
