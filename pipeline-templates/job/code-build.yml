@@ -81,7 +81,7 @@ jobs:
     inputs:
       command: publish
       publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
-      projects: src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric.csproj
+      projects: src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric.sfproj
       arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
       modifyOutputPath: true
 
