@@ -79,14 +79,14 @@ jobs:
   - task: DeleteFiles@1
     displayName: 'Delete Symbols files from Artifact Folder for $(ArtifactFolderName) '
     inputs:
-      SourceFolder: '$(build.artifactstagingdirectory)\ApplicationPackage\'
-      Contents: '**\*ApplicationPackage*\*.pdb'
+      SourceFolder: '$(build.artifactstagingdirectory)/ApplicationPackage/'
+      Contents: '**/*ApplicationPackage*/*.pdb'
       continueOnError: true
   
   - task: ServiceFabricUpdateManifests@2
     displayName: 'Update Service Fabric Manifests (Manifest versions)'
     inputs:
-      applicationPackagePath: '$(build.artifactstagingdirectory)\ApplicationPackage'
+      applicationPackagePath: '$(build.artifactstagingdirectory)/ApplicationPackage'
       versionBehavior: Replace
       continueOnError: true
 
@@ -105,15 +105,15 @@ jobs:
        **\*.nupkg
        !**\packages\**
        !**\bin\x64\**
-     TargetFolder: '$(build.artifactstagingdirectory)\NugetPackages'
+     TargetFolder: '$(build.artifactstagingdirectory)/NugetPackages'
      flattenFolders: true
      continueOnError: true
 
   - task: CopyFiles@2
     displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
     inputs:
-      Contents: '**\ApplicationParameters\*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustments\ApplicationParameters'
+      Contents: '**/ApplicationParameters/*.xml'
+      TargetFolder: '$(build.artifactstagingdirectory)/provideradjustments/ApplicationParameters'
       CleanTargetFolder: true
       flattenFolders: true
       continueOnError: true
@@ -121,8 +121,8 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy PublishProfiles Files to: Artifact PublishProfiles Directory'
     inputs:
-      Contents: '**\PublishProfiles\*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)\provideradjustments\PublishProfiles'
+      Contents: '**/PublishProfiles/*.xml'
+      TargetFolder: '$(build.artifactstagingdirectory)/provideradjustments/PublishProfiles'
       CleanTargetFolder: true
       flattenFolders: true
       continueOnError: true
@@ -136,8 +136,8 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: 'Publish Pipeline Artifact - Provider Adjustments'
     inputs:
-      targetPath: '$(build.artifactstagingdirectory)'
-      artifact: 'provideradjustmentsV2'
+      targetPath: $(build.artifactstagingdirectory)/provideradjustments
+      artifact: provideradjustments
       continueOnError: true
 
   
