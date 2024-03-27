@@ -97,8 +97,11 @@ jobs:
         pipeline-templates/scripts/**    
       TargetFolder: '$(build.artifactstagingdirectory)/publish'
       OverWrite: true
+      CleanTargetFolder: true
+      flattenFolders: true  
+      continueOnError: true
 
-  - task: CopyFiles@2
+  - task: CopyFiles@2 
     displayName: 'Copy Nuget Files to: Artifact Nuget Directory'
     inputs:
      Contents: |
@@ -107,6 +110,9 @@ jobs:
        !**\bin\x64\**
      TargetFolder: '$(build.artifactstagingdirectory)/NugetPackages'
      OverWrite: true
+     CleanTargetFolder: true
+     flattenFolders: true
+     continueOnError: true
      
 
   - task: CopyFiles@2
@@ -115,6 +121,9 @@ jobs:
       Contents: 'src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/ApplicationParameters/*.xml'
       TargetFolder: '$(build.artifactstagingdirectory)/ApplicationParameters'
       OverWrite: true
+      CleanTargetFolder: true
+      flattenFolders: true
+      continueOnError: true
       
       
 
@@ -124,6 +133,9 @@ jobs:
       Contents: 'src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/PublishProfiles/*.xml'
       TargetFolder: '$(build.artifactstagingdirectory)/PublishProfiles'
       OverWrite: true
+      CleanTargetFolder: true
+      flattenFolders: true
+      continueOnError: true
       
       
 
