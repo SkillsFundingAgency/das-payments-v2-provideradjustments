@@ -112,7 +112,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
     inputs:
-      Contents: '/ApplicationParameters/*.xml'
+      Contents: 'src/**/ApplicationParameters/*.xml'
       TargetFolder: '$(build.artifactstagingdirectory)/ApplicationParameters'
       OverWrite: true
       
@@ -121,8 +121,8 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy PublishProfiles Files to: Artifact PublishProfiles Directory'
     inputs:
-      Contents: '/PublishProfiles/*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)/PublishProfiles'
+      Contents: 'src/**/PublishProfiles/*.xml'
+      TargetFolder: '$(build.artifactstagingdirectory)/provideradjustments/PublishProfiles'
       OverWrite: true
       
       
