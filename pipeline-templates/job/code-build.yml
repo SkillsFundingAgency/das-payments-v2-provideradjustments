@@ -37,14 +37,14 @@ jobs:
       projects:  ${{ parameters.TargetProjects }}
       arguments: '--configuration $(buildConfiguration) --no-restore'
 
-  - task: DotNetCoreCLI@2
-    displayName: "Publish"
-    inputs:
-      command: publish
-      publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
-      projects: src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric.sfproj
-      arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
-      modifyOutputPath: true
+  #- task: DotNetCoreCLI@2
+  #  displayName: "Publish"
+  #  inputs:
+  #    command: publish
+  #    publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
+  #    projects: src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric.sfproj
+  #    arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
+  #    modifyOutputPath: true
 
   - task: MSBuild@1
     displayName: 'Build sln'
