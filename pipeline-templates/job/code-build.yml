@@ -136,7 +136,7 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: 'Publish Pipeline Artifact - Provider Adjustments'
     inputs:
-      targetPath: $(build.artifactstagingdirectory)/provideradjustments
+      targetPath: $(build.artifactstagingdirectory)
       artifact: provideradjustments
       continueOnError: true
 
