@@ -106,26 +106,26 @@ jobs:
        !**\packages\**
        !**\bin\x64\**
      TargetFolder: '$(build.artifactstagingdirectory)/NugetPackages'
-     flattenFolders: true
-     continueOnError: true
+     OverWrite: true
+     
 
   - task: CopyFiles@2
     displayName: 'Copy ApplicationParameters Files to: Artifact ApplicationParameters Directory'
     inputs:
       Contents: '**/ApplicationParameters/*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)/provideradjustments/ApplicationParameters'
-      CleanTargetFolder: true
-      flattenFolders: true
-      continueOnError: true
+      TargetFolder: '$(build.artifactstagingdirectory)/ApplicationParameters'
+      OverWrite: true
+      
+      
 
   - task: CopyFiles@2
     displayName: 'Copy PublishProfiles Files to: Artifact PublishProfiles Directory'
     inputs:
       Contents: '**/PublishProfiles/*.xml'
-      TargetFolder: '$(build.artifactstagingdirectory)/provideradjustments/PublishProfiles'
-      CleanTargetFolder: true
-      flattenFolders: true
-      continueOnError: true
+      TargetFolder: '$(build.artifactstagingdirectory)/PublishProfiles'
+      OverWrite: true
+      
+      
 
   #- task: PublishPipelineArtifact@1
   #  displayName: 'Publish Artifact: drop'

@@ -46,8 +46,8 @@ jobs:
           inputs:
             applicationPackagePath: '$(pipeline.workspace)/provideradjustments/ApplicationPackage'
             serviceConnectionName: ${{ parameters.serviceConnectionName }}
-            publishProfilePath: '$(pipeline.workspace)/provideradjustments/provideradjustments/PublishProfiles/Cloud.xml'
-            applicationParameterPath: '$(pipeline.workspace)/provideradjustments/provideradjustments/ApplicationParameters/Cloud.xml'
+            publishProfilePath: '$(pipeline.workspace)/provideradjustments/PublishProfiles/Cloud.xml'
+            applicationParameterPath: '$(pipeline.workspace)/provideradjustments/ApplicationParameters/Cloud.xml'
             applicationName: 'SFA.DAS.Payments.ProviderAdjustments'
             compressPackage: true
             skipUpgradeSameTypeAndVersion: true
