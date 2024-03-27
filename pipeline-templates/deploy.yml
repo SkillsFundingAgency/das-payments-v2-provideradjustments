@@ -44,10 +44,10 @@ jobs:
         - task: ServiceFabricDeploy@1
           displayName: 'Deploy Service Fabric Application - DAS_Payment - ProviderAdjustments'
           inputs:
-            applicationPackagePath: '$(System.DefaultWorkingDirectory)/provideradjustmentsV2/ApplicationPackage'
+            applicationPackagePath: '$(build.artifactstagingdirectory)/provideradjustmentsV2/ApplicationPackage'
             serviceConnectionName: ${{ parameters.serviceConnectionName }}
-            publishProfilePath: '$(System.DefaultWorkingDirectory)/provideradjustmentsV2/provideradjustments/PublishProfiles/Cloud.xml'
-            applicationParameterPath: '$(System.DefaultWorkingDirectory)/provideradjustmentsV2/provideradjustments/ApplicationParameters/Cloud.xml'
+            publishProfilePath: '$(build.artifactstagingdirectory)/provideradjustmentsV2/provideradjustments/PublishProfiles/Cloud.xml'
+            applicationParameterPath: '$(build.artifactstagingdirectory)/provideradjustmentsV2/provideradjustments/ApplicationParameters/Cloud.xml'
             applicationName: 'SFA.DAS.Payments.ProviderAdjustments'
             compressPackage: true
             skipUpgradeSameTypeAndVersion: true
