@@ -31,11 +31,11 @@ jobs:
       feedsToUse: 'select'
       vstsFeed: 'dct-pkg'
     
-  #- task: DotNetCoreCLI@2
-  #  displayName: Build
-  #  inputs:
-  #    projects:  ${{ parameters.TargetProjects }}
-  #    arguments: '--configuration $(buildConfiguration) --no-restore'
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      projects:  ${{ parameters.TargetProjects }}
+      arguments: '--configuration $(buildConfiguration) --no-restore'
 
   - task: MSBuild@1
     displayName: 'Build sln'
@@ -82,7 +82,7 @@ jobs:
       command: publish
       publishWebProjects: false #set to false as this setting (which defaults to true) will parse the entire repo for web projects
       projects: src/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric/SFA.DAS.Payments.ProviderAdjustments.ServiceFabric.sfproj
-      arguments: "-o $(build.artifactstagingdirectory)/publish -c $(BuildConfiguration) --no-restore --no-build"
+      arguments: "-o $(build.artifactstagingdirectory) -c $(BuildConfiguration) --no-restore --no-build"
       modifyOutputPath: true
 
   - task: DeleteFiles@1
