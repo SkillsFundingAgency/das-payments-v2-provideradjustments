@@ -9,10 +9,17 @@ variables:
   value : 'x64'
 - name: BuildConfiguration
   value: 'release'
+- group: Common - Project Level
+- group: Common - Connection String
+- group: Common - Database Names
+- group: Common - Database Usernames
+- group: DCOL-DAS-PaymentsV2-Release
+- group: Common -  Storage Account
 
 resources:
   repositories:
     - repository: das-payments-v2-provideradjustments
+      fetchDepth: 0
       type: github
       name: SkillsFundingAgency/das-payments-v2-provideradjustments
       endpoint: SkillsFundingAgency
@@ -21,4 +28,87 @@ stages:
 - stage: Build
   jobs:
   - template: pipeline-templates/job/code-build.yml
-- template: azure-pipelines-templates/deploy/stage/nuget-publish.yml
+    #- template: azure-pipelines-templates/deploy/stage/nuget-publish.yml
+
+- stage: Deploy_DST
+  displayName: 'Deploy to DST'
+  variables:
+  - name: tagEnvironment
+    value: Dev/Test
+  - group: DCOL-DST - Environment Key Vault Secrets
+  - group: DCOL-DAS-PaymentsV2-DST
+  jobs:
+  - template: pipeline-templates/deploy.yml
+    parameters:
+      pool: DCT
+      demands:
+       - agent.name -equals DCOL-DST-RG-1-01
+       - agent.name -equals DCOL-DST-RG-2-01
+      environmentName: DST
+      azureSubscription: DCT-VSO
+      clusterConnection: 'DCOL-DST-ServiceFabric-WEU'
+      serviceConnectionName: 'DCOL-DST-ServiceFabric-WEU'
+
+- stage: Deploy_DAS
+  #dependsOn: Publish_MonitoringMetrics
+  displayName: Deploy to DAS
+  variables:
+  - name: tagEnvironment
+    value: Dev/Test
+  - group: DCOL-DAS - Environment Key Vault Secrets
+  - group: DCOL-DAS-PaymentsV2-DAS
+  jobs:
+  - template: pipeline-templates/deploy.yml
+    parameters:
+      pool: DCT
+      demands:
+       - agent.name -equals DCOL-DAS-RG-1-01
+       - agent.name -equals DCOL-DAS-RG-2-01
+      environmentName: DAS
+      azureSubscription: DCT-VSO
+      clusterConnection: 'DCOL-DAS-ServiceFabric-WEU'
+      serviceConnectionName: 'DCOL-DAS-ServiceFabric-WEU'
+
+- stage: Deploy_SIT
+  #dependsOn: 
+  #- Publish_MonitoringMetrics
+  #- Deploy_DST
+  displayName: Deploy to SIT
+  variables:
+  - name: tagEnvironment
+    value: Dev/Test
+  - group: DCOL-SIT - Environment Key Vault Secrets
+  - group: DCOL-DAS-PaymentsV2-SIT
+  jobs:
+  - template: pipeline-templates/deploy.yml
+    parameters:
+      pool: DCT
+      demands:
+       - agent.name -equals DCOL-SIT-RG-1-01
+       - agent.name -equals DCOL-SIT-RG-2-01
+      environmentName: SIT
+      azureSubscription: DCT-VSO
+      clusterConnection: 'DCOL-SIT-ServiceFabric-WEU'
+      serviceConnectionName: 'DCOL-SIT-ServiceFabric-WEU'
+
+- stage: Deploy_SDW
+  #dependsOn: 
+  #- Publish_MonitoringMetrics
+  #- Deploy_SIT
+  displayName: Deploy to SDW
+  variables:
+  - name: tagEnvironment
+    value: Dev/Test
+  - group: DCOL-SDW - Environment Key Vault Secrets
+  - group: DCOL-DAS-PaymentsV2-SDW
+
+  jobs:
+  - template: pipeline-templates/deploy.yml
+    parameters:
+      pool: DCT
+      demands:
+       - agent.name -equals DCOL-SDW-RG-01
+      environmentName: SDW
+      azureSubscription: DCOL-Shadow
+      clusterConnection: 'DCOL-SDW-ServiceFabric-WEU'
+      serviceConnectionName: 'DCOL-SDW-ServiceFabric-WEU'
