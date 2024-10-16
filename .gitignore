@@ -352,3 +352,5 @@ MigrationBackup/
 # service fabric local config
 **/ApplicationParameters/Local.1Node.xml
 **/ApplicationParameters/Local.5Node.xml
+**/PublishProfiles/Local.1Node.xml
+**/PublishProfiles/Local.5Node.xml
