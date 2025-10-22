@@ -20,11 +20,8 @@ More information here:
 
 ### Pre-Requisites
 
-Setup instructions can be found at the following link, which will help you set up your environment and access the correct repositories: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/950927878/Development+Environment+-+Payments+V2+DAS+Space
+Setup instructions can be found at the following link, which will help you set up your environment and access the correct repositories: [https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/950927878/Development+Environment+-+Payments+V2+DAS+Space](https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/4948754681)
 
-### Config
-
-As detailed in: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/644972941/Developer+Configuration+Settings
 
 Select the configuration for the Earning Events application
 
