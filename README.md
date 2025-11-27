@@ -14,7 +14,6 @@ The Payments V2 Provider Adjustments service is responsible for taking calculati
 
 More information here: 
 - https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/400130049/4.+Payments+v2+-+Components+DAS+Space
-- https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/4113039416/Payments+V2+-+Dev+-+Applications+-+Provider+Adjustments+EAS
 
 ## 🚀 Installation
 
