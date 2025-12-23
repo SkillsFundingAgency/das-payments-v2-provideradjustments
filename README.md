@@ -14,17 +14,13 @@ The Payments V2 Provider Adjustments service is responsible for taking calculati
 
 More information here: 
 - https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/400130049/4.+Payments+v2+-+Components+DAS+Space
-- https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/4113039416/Payments+V2+-+Dev+-+Applications+-+Provider+Adjustments+EAS
 
 ## 🚀 Installation
 
 ### Pre-Requisites
 
-Setup instructions can be found at the following link, which will help you set up your environment and access the correct repositories: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/950927878/Development+Environment+-+Payments+V2+DAS+Space
+Setup instructions can be found at the following link, which will help you set up your environment and access the correct repositories: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/4948754681/DAS+Payments+-+Developer+Onboarding+2025
 
-### Config
-
-As detailed in: https://skillsfundingagency.atlassian.net/wiki/spaces/NDL/pages/644972941/Developer+Configuration+Settings
 
 Select the configuration for the Earning Events application
 
@@ -34,7 +30,7 @@ N/A
 
 ## Technologies
 
-* .NetCore 2.1/3.1/6
+* .NetCore 6
 * Azure SQL Server
 * Azure Functions
 * Azure Service Bus
